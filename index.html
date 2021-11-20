@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue ToDo App</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app" class="mt-10 m-auto lg:w-1/3 sm:w-auto">
+    <h1 class="mb-2 text-2xl font-medium">ToDo List</h1>
+    <form v-on:submit.prevent class="flex">
+      <input type="text" v-model="newItem" class="w-full px-3 py-1.5 border-2 border-pink-600 rounded mr-5">
+      <button v-on:click="addTodo" class="bg-pink-600 rounded px-8 text-white">Add</button>
+    </form>
+    <ul class="mt-5">
+      <li v-for="(todo, index) in todos" class="w-full mb-2 px-3 py-3 flex justify-space items-center border-l-8 border-pink-600 rounded shadow-md">
+        <label>
+          <input type="checkbox" v-model="todo.isDone" class="hidden">
+          <span v-bind:class="{'border-pink-600': todo.isDone}" class="inline-block w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center">
+            <i v-bind:class="{'text-pink-600': todo.isDone}" class="ri-check-fill text-gray-400"></i>
+          </span>
+        </label>
+        <p v-bind:class="{'text-pink-600': todo.isDone}" class="w-full text-left pl-3 text-lg">{{todo.item}}</p>
+        <i v-on:click="deleteTodos" class="ri-close-fill text-gray-400"></i>
+      </li>
+    </ul>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
