@@ -1,2 +1,2 @@
 # todolist
-Vue js Todo List
+Vue jsとTailwindの勉強がてらTodoリストを作りました
